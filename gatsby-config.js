@@ -7,14 +7,14 @@ module.exports = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-jodie/gatsby-config.js
-    siteTitle: `Jodie`,
-    siteTitleAlt: `Jodie - Gatsby Starter Portfolio`,
-    siteHeadline: `Jodie - Gatsby Theme from @lekoarts`,
-    siteUrl: `https://jodie.lekoarts.de`,
-    siteDescription: `Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects.`,
-    siteLanguage: `en`,
+    siteTitle: `Мария Маранте`,
+    siteTitleAlt: `Мария Маранте - Клинический Психолог`,
+    siteHeadline: `Мария Маранте - Клинический Психолог`,
+    siteUrl: `https://mariamarante.com`,
+    siteDescription: `Сайт Марии Маранте`,
+    siteLanguage: `ru`,
     siteImage: `/banner.jpg`,
-    author: `@lekoarts_de`,
+    author: `@lonkly`,
   },
   plugins: [
     {
@@ -23,9 +23,11 @@ module.exports = {
       options: {
         navigation: [
           { name: `Методы`, slug: `/projects` },
-          { name: `Сертификаты`, slug: `/art` },
+          { name: `Сертификаты`, slug: `/certificates` },
           { name: `Обо мне`, slug: `/about` },
         ],
+        basePath: '/',
+        homepageProjectLimit: 0
       },
     },
     {
@@ -37,8 +39,8 @@ module.exports = {
         // See: https://github.com/LekoArts/gatsby-themes/tree/main/examples/jodie#changing-your-fonts
         web: [
           {
-            name: `Work Sans`,
-            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
+            name: `Great Vibes`,
+            file: `https://fonts.google.com/download?family=Great%20Vibes`,
           },
         ],
       },
@@ -54,7 +56,7 @@ module.exports = {
       options: {
         name: `jodie - @lekoarts/gatsby-theme-jodie`,
         short_name: `jodie`,
-        description: `Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects.`,
+        description: ` `,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
