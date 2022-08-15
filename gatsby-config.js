@@ -22,12 +22,15 @@ module.exports = {
       // See the theme's README for all available options
       options: {
         navigation: [
-          { name: `Методы`, slug: `/projects` },
-          { name: `Сертификаты`, slug: `/certificates` },
-          { name: `Обо мне`, slug: `/about` },
+         // { name: `Методы`, slug: `/projects` },
+         { name: `Обо мне`, slug: `/about` },
+         { name: `Образование`, slug: `/education` },
+         { name: `Сертификаты`, slug: `/certificates` },
+         { name: `Запись на приём`, slug: `/client` },
         ],
         basePath: '/',
-        homepageProjectLimit: 0
+        homepageProjectLimit: 0,
+        homepagePageLimit: 0
       },
     },
     {
