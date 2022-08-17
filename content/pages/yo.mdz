@@ -1,4 +1,4 @@
-<!-- ---
+---
 title: "About"
 slug: "/about"
 cover: "./about-us-cover-image.jpg"
@@ -209,4 +209,4 @@ This paragraph has some `code` in it.
 
     ![Alt Text](https://placehold.it/200x50 "Image Title")
 
-![Alt Text](https://placehold.it/1600x900 "Image Title") -->
+![Alt Text](https://placehold.it/1600x900 "Image Title")
