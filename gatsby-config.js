@@ -26,7 +26,7 @@ module.exports = {
          { name: `Обо мне`, slug: `/about` },
          { name: `Образование`, slug: `/education` },
          { name: `Сертификаты`, slug: `/certificates` },
-         { name: `Запись на приём`, slug: `/client` },
+         { name: `Консультации`, slug: `/client` },
         ],
         basePath: '/',
         homepageProjectLimit: 0,
