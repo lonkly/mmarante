@@ -24,6 +24,7 @@ module.exports = {
         navigation: [
          // { name: `Методы`, slug: `/projects` },
          { name: `Обо мне`, slug: `/about` },
+         { name: `Мои Методы`, slug: `/methods` },
          { name: `Образование`, slug: `/education` },
          { name: `Сертификаты`, slug: `/certificates` },
          { name: `Консультации`, slug: `/client` },
