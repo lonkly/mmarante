@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import * as React from "react"
-import { PageProps } from "gatsby"
+import type { HeadFC, PageProps } from "gatsby"
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image"
 import Layout from "@lekoarts/gatsby-theme-jodie/src/components/layout"
 import GridItem from "@lekoarts/gatsby-theme-jodie/src/components/grid-item"
@@ -9,9 +9,12 @@ import { itemListWrapperStyles, itemStyles } from "@lekoarts/gatsby-theme-jodie/
 import locales from "@lekoarts/gatsby-theme-jodie/src/locales"
 import { visuallyHidden } from "@lekoarts/gatsby-theme-jodie/src/styles/utils"
 import modifyGrid from "../utils/modify-grid"
+import Seo from "@lekoarts/gatsby-theme-jodie/src/components/seo"
 import { Redirect } from '@reach/router'
+import { navigate } from 'gatsby';
+import { useEffect } from 'react';
 
-type DataProps = {
+export type JodieHomepageProps = {
   projects: {
     nodes: {
       slug: string
@@ -37,28 +40,9 @@ type DataProps = {
     }[]
   }
 }
-
-const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } }) => {
-  const rawItems = [...pages.nodes]
-  const items = modifyGrid(rawItems)
-  const itemsCount = items.length
-  let divisor = 9
-
-  for (let i = 0; i < itemsCount; i++) {
-    const quotient = itemsCount % divisor
-    const quotientAlt = (itemsCount - 1) % divisor
-
-    if (quotient === 0 || quotientAlt === 0) {
-      break
-    }
-
-    divisor -= 1
-  }
-
-  return (
-    <Redirect noThrow to="/about" />
-  )
-}
-
-export default Homepage
-
+export default () => {
+  useEffect(() => {
+    navigate('/about');
+  }, []);
+  return null;
+};
