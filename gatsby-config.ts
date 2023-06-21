@@ -30,6 +30,7 @@ const config: GatsbyConfig = {
                     { name: `Образование`, slug: `/education` },
                     { name: `Сертификаты`, slug: `/certificates` },
                     { name: `Консультации`, slug: `/client` },
+                    { name: `Контакты`, slug: `/contacts` },
                 ],
                 basePath: '/',
                 homepageProjectLimit: 0,
