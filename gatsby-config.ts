@@ -30,6 +30,7 @@ const config: GatsbyConfig = {
                     { name: `Образование`, slug: `/education` },
                     { name: `Сертификаты`, slug: `/certificates` },
                     { name: `Консультации`, slug: `/client` },
+                    { name: `Опросник ТДО`, slug: `/questionarie` },
                     { name: `Контакты`, slug: `/contacts` },
                 ],
                 basePath: '/',
@@ -58,8 +59,8 @@ const config: GatsbyConfig = {
                 name: `jodie - @lekoarts/gatsby-theme-jodie`,
                 short_name: `jodie`,
                 description: ` `,
-                start_url: `/`,
-                background_color: `#ffffff`,
+                start_url: `/about`,
+               // background_color: `#ffffff`,
                 // This will impact how browsers show your PWA/website
                 // https://css-tricks.com/meta-theme-color-and-trickery/
                 // theme_color: `#b75e09`,
