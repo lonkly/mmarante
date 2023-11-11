@@ -72,7 +72,17 @@ const QuestionnaireComponent = () => {
                                                         />
                                                     </label>
                                                 ))}
-                                                <input type="submit" value="Результат" style={{ marginTop: '20px' }} />
+                                                <input 
+    type="submit" 
+    value="Результат" 
+    style={{ 
+        marginTop: '20px', 
+        minHeight: '44px', 
+        paddingLeft: '20px', // Adjust the padding value as needed for leading padding
+        paddingRight: '20px', // Adjust the padding value as needed for trailing padding
+    }} 
+/>
+
                                         </form>
                                         {yesCount !== null && <div style={{ marginTop: '20px' }}>Ваш балл НДО: {yesCount}</div>}
                                 </div>
