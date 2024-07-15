@@ -47,10 +47,49 @@ const config: GatsbyConfig = {
                 path: `${__dirname}/src/pages`,
             },
         },
+
+        {
+            resolve: `gatsby-plugin-robots-txt`,
+            options: {
+                host: `https://www.mariamarante.com`,
+                sitemap: `https://www.mariamarante.com/sitemap.xml`,
+                policy: [{ userAgent: '*', allow: '/' }],
+            },
+        },
+
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-                output: `/`,
+                // The example below will exclude the single `category` page and the `/path/to/page` path
+                // exclude: ["/category/*", "/path/to/page"],
+                query: `
+                {
+                  allSitePage {
+                    nodes {
+                      path
+                    }
+                  }
+                  site {
+                    siteMetadata {
+                      siteUrl
+                    }
+                  }
+                }
+              `,
+              resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
+              resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+                return allPages.map(page => {
+                  return { ...page };
+                });
+              },
+              serialize: ({ site, allSitePage }) =>
+                allSitePage.nodes.map(node => {
+                  return {
+                    url: `${site.siteMetadata.siteUrl}${node.path}`,
+                    changefreq: `daily`,
+                    priority: 0.7,
+                  };
+                }),
             },
         },
         {
@@ -60,7 +99,7 @@ const config: GatsbyConfig = {
                 short_name: `jodie`,
                 description: ` `,
                 start_url: `/about`,
-               // background_color: `#ffffff`,
+                // background_color: `#ffffff`,
                 // This will impact how browsers show your PWA/website
                 // https://css-tricks.com/meta-theme-color-and-trickery/
                 // theme_color: `#b75e09`,
