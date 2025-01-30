@@ -62,7 +62,7 @@
         <!-- Fullscreen overlay covering the entire screen -->
         <div class="fixed inset-0 z-40 bg-linear-to-br from-primary to-gray-100 p-6 flex flex-col text-center">
             <!-- Navigation links -->
-            <nav class="space-y-4 mt-12">
+            <nav class="space-y-4">
                 <div class="flex justify-center"><Logo/></div>
                 {#each navigation as link}
                     <a
