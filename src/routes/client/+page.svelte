@@ -2,7 +2,7 @@
     // Optional: Add any dynamic logic here if needed in the future
 </script>
 
-<div class="max-w-2xl mx-auto py-8 px-4 text-center bg-white shadow-lg rounded-lg">
+<div class="mt-20 mt-5 max-w-2xl mx-auto py-8 px-4 text-center bg-white shadow-lg rounded-lg">
     <h1 class="text-2xl font-bold mb-4 text-gray-800">Консультации онлайн</h1>
     <p class="text-lg font-medium mb-6 text-gray-600">
         <strong>Стоимость 55 минут:</strong> 8000₽ / 90$ / 90€

@@ -46,7 +46,7 @@
 <div class="md:hidden">
     <!-- Hamburger / Close Button -->
     <button
-      class="fixed mt-4 mr-2 top-4 right-4 z-50 bg-white p-4 rounded-full shadow-md"
+      class="fixed mt-4 mr-2 top-4 right-6 z-50 bg-white p-4 rounded-full shadow-md"
       on:click={() => (isOpen = !isOpen)}
       aria-label="Toggle navigation menu"
     >
