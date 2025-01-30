@@ -21,7 +21,7 @@
 
 <div class="flex h-screen bg-linear-to-br from-gray-100 via-primary to-gray-100">
     <Sidebar />
-    <main class="flex-1 overflow-auto p-8">
+    <main class="flex-1 overflow-auto">
         <ParaglideJS {i18n}>
             {@render children()}
         </ParaglideJS>
