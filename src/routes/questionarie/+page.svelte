@@ -45,7 +45,7 @@
 </style>
 
 <div class="w-full mx-auto p-4">
-    <h1 class="text-3xl">Опросник ТДО</h1>
+    <h1 class="text-3xl">Тест: неблагоприятный детский опыт</h1>
     <br>
     <form on:submit={handleSubmit} class="space-y-4">
         {#each questions as question, index}

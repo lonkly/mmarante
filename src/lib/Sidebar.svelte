@@ -11,7 +11,7 @@
         { name: "Образование", slug: "/education" },
         { name: "Сертификаты", slug: "/certificates" },
         { name: "Консультации", slug: "/client" },
-        { name: "Опросник ТДО", slug: "/questionarie" },
+        { name: "Опросник НДО", slug: "/questionarie" },
         { name: "Контакты", slug: "/contacts" },
     ];
 
