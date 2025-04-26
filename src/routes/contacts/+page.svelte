@@ -38,7 +38,7 @@
       transition: transform 0.3s;
     }
     .icon:hover {
-      transform: scale(1.1);
+      transform: scale(1.3);
     }
   </style>
   
@@ -55,7 +55,7 @@
       />
       <!-- WhatsApp Icon -->
       <img
-        class="icon m-3"
+        class="icon m-3 scale-120"
         src="images/other/whatsapp.svg"
         alt="WhatsApp"
         on:click={() => redirectTo('whatsapp')}

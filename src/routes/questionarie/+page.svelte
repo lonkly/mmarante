@@ -45,7 +45,7 @@
 </style>
 
 <div class="w-full mx-auto p-4">
-    <h1 class="text-3xl">Тест: неблагоприятный детский опыт</h1>
+    <h1 class="text-3xl">Опросник ТДО</h1>
     <br>
     <form on:submit={handleSubmit} class="space-y-4">
         {#each questions as question, index}
@@ -72,7 +72,7 @@
         <input
           type="submit"
           value="Результат"
-          class="bg-[#DDC8C4] hover:bg-[#c5a9a1] text-gray500
+          class="bg-primary-light hover:bg-primary text-white
                    py-2 px-6 rounded-md cursor-pointer"
         />
     </form>

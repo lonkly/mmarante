@@ -8,20 +8,20 @@
 
 <svelte:head>
     <title>Maria Marante</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKMTHR85CF"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'YOUR_TRACKING_ID');
+        gtag('config', 'G-TKMTHR85CF');
     </script>
 </svelte:head>
 
-<div class="flex h-screen bg-linear-to-br from-gray-100 via-primary to-gray-100">
+<div class="flex h-screen bg-white">
     <Sidebar />
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1 overflow-auto p-8">
         <ParaglideJS {i18n}>
             {@render children()}
         </ParaglideJS>

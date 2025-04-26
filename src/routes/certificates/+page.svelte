@@ -8,11 +8,12 @@
   type Image = {
     src: string;
     title: string;
-    width?: number;
-    height?: number;
+    width: number;
+    height: number;
+    loaded: boolean;
   };
 
-  const imageSrcs: Image[] = [
+  const imageSrcs: { src: string; title: string }[] = [
     { src: '/images/diplomas/diploma3.jpeg', title: 'Diploma 3' },
     { src: '/images/diplomas/diploma.jpeg', title: 'Diploma 0' },
     { src: '/images/diplomas/diploma2.jpeg', title: 'Diploma 2' },
@@ -31,55 +32,58 @@
     { src: '/images/diplomas/11.jpg', title: 'Certificate 11' },
     { src: '/images/diplomas/12.jpeg', title: 'Certificate 12' },
     { src: '/images/diplomas/13.jpg', title: 'Certificate 13' },
-    { src: '/images/diplomas/14.jpg', title: 'Certificate 14' },
+    { src: '/images/diplomas/14.jpg', title: 'Certificate 14' }
   ];
 
-  let images: Image[] = Array(imageSrcs.length).fill(null);
-
-  function preloadImages() {
-    imageSrcs.forEach((imgData, index) => {
-      const img = new Image();
-      img.onload = function () {
-        images[index] = {
-          src: imgData.src,
-          title: imgData.title,
-          width: img.naturalWidth,
-          height: img.naturalHeight,
-        };
-        if (images.every(Boolean)) {
-          initializeLightbox();
-        }
-      };
-      img.onerror = function () {
-        console.error(`Failed to load image: ${imgData.src}`);
-        images[index] = { ...imgData }; // Use default data if loading fails
-        if (images.every(Boolean)) {
-          initializeLightbox();
-        }
-      };
-      img.src = imgData.src;
-    });
-  }
+  let images: Image[] = [];
 
   function initializeLightbox() {
     lightbox = new PhotoSwipeLightbox({
       gallery: '#masonry-gallery',
       children: 'a',
       pswpModule: () => import('photoswipe'),
-      bgOpacity: 0.8,
+      bgOpacity: 0.8
     });
     lightbox.init();
   }
 
   onMount(() => {
-    preloadImages();
+    images = imageSrcs.map((imgData) => ({
+      src: imgData.src,
+      title: imgData.title,
+      width: 0,
+      height: 0,
+      loaded: false
+    }));
+
+    // Load each image *once* to get natural size
+    images.forEach((image, index) => {
+      const img = new (window as any).Image() as HTMLImageElement;
+      img.src = image.src;
+      img.onload = () => {
+        images[index].width = img.naturalWidth;
+        images[index].height = img.naturalHeight;
+        images[index].loaded = true;
+
+        if (images.every((img) => img.loaded)) {
+          initializeLightbox();
+        }
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${image.src}`);
+        images[index].loaded = true; // still mark as loaded to avoid blocking
+        if (images.every((img) => img.loaded)) {
+          initializeLightbox();
+        }
+      };
+    });
   });
 </script>
 
 <style>
   .gallery-container {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 900px;
   }
 
   .masonry {
@@ -107,25 +111,35 @@
     display: block;
     object-fit: cover;
     max-height: 250px;
+    filter: blur(10px);
+    transition: filter 0.7s ease;
+  }
+
+  .masonry-item img.loaded {
+    filter: none;
   }
 </style>
 
 <div class="gallery-container">
   <div class="masonry" id="masonry-gallery">
-    {#if images.every(Boolean)}
-      {#each images as { src, title, width, height }}
+    {#if images.length}
+      {#each images as { src, title, width, height, loaded }}
         <a
                 href={src}
                 class="masonry-item"
                 title={title}
-                data-pswp-width={width}
-                data-pswp-height={height}
+                data-pswp-width={width || 800}
+                data-pswp-height={height || 600}
         >
-          <img src={src} alt={title} loading="lazy" />
+          <img
+                  src={src}
+                  alt={title}
+                  loading="lazy"
+                  class:loaded={loaded}
+          />
         </a>
       {/each}
     {:else}
-      <!-- Optional: Add a loading indicator here -->
       <p>Loading images...</p>
     {/if}
   </div>

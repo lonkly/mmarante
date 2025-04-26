@@ -7,8 +7,8 @@
 @plugin '@tailwindcss/aspect-ratio';
 
 @theme {
-  --color-primary: #ddc8c4;
-  --color-primary-light: #e7d8d3;
+  --color-primary: #1A472A;
+  --color-primary-light: #2A623D;
 }
 
 /*
