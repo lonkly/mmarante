@@ -21,7 +21,7 @@
     }
 </script>
 
-<aside class="hidden md:flex md:flex-col md:w-64 md:h-screen md:shadow-md md:p-6 cursor-default">
+<aside class="hidden md:flex     md:flex-col md:w-64 md:h-screen md:shadow-md md:p-6 cursor-default">
     <nav class="space-y-4">
         <Logo/>
         {#each navigation as link}
@@ -53,21 +53,24 @@
     </button>
 
     {#if isOpen}
-        <div class="fixed inset-0 z-40 bg-gray-100 p-6 flex flex-col text-center">
-            <nav class="space-y-4 mt-12 cursor-default">
-                <div class="flex justify-center"><Logo/></div>
+        <div class="fixed inset-0 z-40 bg-gray-100 p-6 flex flex-col text-center overflow-y-auto min-h-screen">
+            <div class="flex justify-center">
+                <Logo />
+            </div>
+
+            <nav class="space-y-4 mt-12 flex flex-col flex-grow">
                 {#each navigation as link}
                     <a
                             href={link.slug}
                             on:click={handleLinkClick}
-                            class="block text-2xl font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition hover:md:shadow-md"
+                            class="block text-2xl font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition"
                     >
                         {link.name}
                     </a>
                 {/each}
             </nav>
 
-            <footer class="mt-auto text-sm text-center text-gray-500">
+            <footer class="text-sm text-center text-gray-500 mt-6 mb-4">
                 &copy; {new Date().getFullYear()} by Мария Маранте.
             </footer>
         </div>
