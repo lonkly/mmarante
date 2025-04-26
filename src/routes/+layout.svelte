@@ -2,6 +2,7 @@
     import { i18n } from '$lib/i18n';
     import { ParaglideJS } from '@inlang/paraglide-sveltekit';
     import Sidebar from '$lib/Sidebar.svelte';
+    import { sidebarOpen } from '$lib/stores'; // <- we'll create this store
     let { children } = $props();
     import '../app.css';
 </script>
@@ -19,9 +20,9 @@
     </script>
 </svelte:head>
 
-<div class="flex h-screen bg-white">
+<div class="flex h-screen bg-white overflow-hidden">
     <Sidebar />
-    <main class="flex-1 overflow-auto p-8">
+    <main class={`flex-1 p-8 transition-all duration-300 ${$sidebarOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
         <ParaglideJS {i18n}>
             {@render children()}
         </ParaglideJS>
