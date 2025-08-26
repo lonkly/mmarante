@@ -1,4 +1,4 @@
-const BROWSER = false;
+const DEV = false;
 var is_array = Array.isArray;
 var index_of = Array.prototype.indexOf;
 var array_from = Array.from;
@@ -354,7 +354,7 @@ function pause_effect(effect2, callback) {
   pause_children(effect2, transitions, true);
   run_out_transitions(transitions, () => {
     destroy_effect(effect2);
-    callback();
+    if (callback) callback();
   });
 }
 function run_out_transitions(transitions, fn) {
@@ -671,8 +671,8 @@ function update_effect(effect2) {
     effect2.wv = write_version;
     var deps = effect2.deps;
     var dep;
-    if (BROWSER && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && deps !== null) ;
-    if (BROWSER) ;
+    if (DEV && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && deps !== null) ;
+    if (DEV) ;
   } catch (error) {
     handle_error(error, effect2, previous_effect, previous_component_context || effect2.ctx);
   } finally {
@@ -842,7 +842,7 @@ function flush_sync(fn) {
     }
     flush_count = 0;
     last_scheduled_effect = null;
-    if (BROWSER) ;
+    if (DEV) ;
     return result;
   } finally {
     scheduler_mode = previous_scheduler_mode;
@@ -1178,6 +1178,9 @@ function spread_props(props) {
   }
   return merged_props;
 }
+function stringify(value) {
+  return typeof value === "string" ? value : value == null ? "" : value + "";
+}
 function store_get(store_values, store_name, store) {
   if (store_name in store_values && store_values[store_name][0] === store) {
     return store_values[store_name][2];
@@ -1236,21 +1239,21 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  fallback as $,
+  rest_props as $,
   component_root as A,
-  BROWSER as B,
+  BLOCK_EFFECT as B,
   CLEAN as C,
-  DIRTY as D,
+  DEV as D,
   is_passive_event as E,
   create_text as F,
   branch as G,
   HYDRATION_ERROR as H,
   push$1 as I,
-  pop$1 as J,
-  component_context as K,
-  get as L,
+  component_context as J,
+  pop$1 as K,
+  LEGACY_PROPS as L,
   MAYBE_DIRTY as M,
-  LEGACY_PROPS as N,
+  get as N,
   flush_sync as O,
   render as P,
   push as Q,
@@ -1263,23 +1266,24 @@ export {
   attr as X,
   unsubscribe_stores as Y,
   head as Z,
-  rest_props as _,
-  DERIVED as a,
-  spread_attributes as a0,
-  clsx as a1,
-  element as a2,
-  slot as a3,
-  bind_props as a4,
-  sanitize_props as a5,
+  sanitize_props as _,
+  DIRTY as a,
+  fallback as a0,
+  spread_attributes as a1,
+  clsx as a2,
+  element as a3,
+  slot as a4,
+  bind_props as a5,
   spread_props as a6,
   escape_html as a7,
   getContext as a8,
-  noop as a9,
-  subscribe_to_store as aa,
-  schedule_effect as b,
-  active_reaction as c,
-  is_runes as d,
-  BLOCK_EFFECT as e,
+  stringify as a9,
+  noop as aa,
+  subscribe_to_store as ab,
+  DERIVED as b,
+  schedule_effect as c,
+  active_reaction as d,
+  is_runes as e,
   derived_sources as f,
   state_unsafe_mutation as g,
   active_effect as h,

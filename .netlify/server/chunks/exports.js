@@ -1,4 +1,4 @@
-import { a9 as noop, aa as subscribe_to_store } from "./index.js";
+import { aa as noop, ab as subscribe_to_store } from "./index.js";
 import { a as safe_not_equal } from "./equality.js";
 const internal = new URL("sveltekit-internal://");
 function resolve(base, path) {

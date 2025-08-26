@@ -1,7 +1,8 @@
-import { B as BROWSER } from "./chunks/index.js";
+import { D as DEV } from "./chunks/index.js";
 import { b as base, a as assets, o as override, r as reset } from "./chunks/paths.js";
-import { m as make_trackable, d as disable_search, w as writable, r as readable, n as normalize_path, a as add_data_suffix, b as resolve, h as has_data_suffix, s as strip_data_suffix, c as decode_pathname, e as decode_params, v as validate_layout_server_exports, f as validate_layout_exports, g as validate_page_server_exports, i as validate_page_exports, j as validate_server_exports } from "./chunks/exports.js";
-import { p as public_env, s as safe_public_env, r as read_implementation, o as options, a as set_private_env, b as prerendering, c as set_public_env, g as get_hooks, d as set_safe_public_env, e as set_read_implementation } from "./chunks/internal.js";
+import { m as make_trackable, d as disable_search, r as readable, w as writable, n as normalize_path, a as add_data_suffix, b as resolve, h as has_data_suffix, s as strip_data_suffix, c as decode_pathname, e as decode_params, v as validate_layout_server_exports, f as validate_layout_exports, g as validate_page_server_exports, i as validate_page_exports, j as validate_server_exports } from "./chunks/exports.js";
+import { p as public_env, s as safe_public_env, r as read_implementation, o as options, g as get_hooks, a as set_private_env, b as prerendering, c as set_public_env, d as set_safe_public_env, e as set_read_implementation } from "./chunks/internal.js";
+import { parse, serialize } from "cookie";
 const SVELTE_KIT_ASSETS = "/_svelte_kit_assets";
 const ENDPOINT_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"];
 const PAGE_METHODS = ["GET", "POST", "HEAD"];
@@ -2574,7 +2575,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
     state.prerender_default = should_prerender;
     const fetched = [];
     if (get_option(nodes, "ssr") === false && !(state.prerendering && should_prerender_data)) {
-      if (BROWSER && action_result && !event.request.headers.has("x-sveltekit-action")) ;
+      if (DEV && action_result && !event.request.headers.has("x-sveltekit-action")) ;
       return await render_response({
         branch: [],
         fetched,
@@ -2793,158 +2794,6 @@ function exec(match, params, matchers) {
   if (buffered) return;
   return result;
 }
-var cookie = {};
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-var hasRequiredCookie;
-function requireCookie() {
-  if (hasRequiredCookie) return cookie;
-  hasRequiredCookie = 1;
-  cookie.parse = parse;
-  cookie.serialize = serialize;
-  var __toString = Object.prototype.toString;
-  var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
-  function parse(str, options2) {
-    if (typeof str !== "string") {
-      throw new TypeError("argument str must be a string");
-    }
-    var obj = {};
-    var opt = options2 || {};
-    var dec = opt.decode || decode;
-    var index = 0;
-    while (index < str.length) {
-      var eqIdx = str.indexOf("=", index);
-      if (eqIdx === -1) {
-        break;
-      }
-      var endIdx = str.indexOf(";", index);
-      if (endIdx === -1) {
-        endIdx = str.length;
-      } else if (endIdx < eqIdx) {
-        index = str.lastIndexOf(";", eqIdx - 1) + 1;
-        continue;
-      }
-      var key2 = str.slice(index, eqIdx).trim();
-      if (void 0 === obj[key2]) {
-        var val = str.slice(eqIdx + 1, endIdx).trim();
-        if (val.charCodeAt(0) === 34) {
-          val = val.slice(1, -1);
-        }
-        obj[key2] = tryDecode(val, dec);
-      }
-      index = endIdx + 1;
-    }
-    return obj;
-  }
-  function serialize(name, val, options2) {
-    var opt = options2 || {};
-    var enc = opt.encode || encode2;
-    if (typeof enc !== "function") {
-      throw new TypeError("option encode is invalid");
-    }
-    if (!fieldContentRegExp.test(name)) {
-      throw new TypeError("argument name is invalid");
-    }
-    var value = enc(val);
-    if (value && !fieldContentRegExp.test(value)) {
-      throw new TypeError("argument val is invalid");
-    }
-    var str = name + "=" + value;
-    if (null != opt.maxAge) {
-      var maxAge = opt.maxAge - 0;
-      if (isNaN(maxAge) || !isFinite(maxAge)) {
-        throw new TypeError("option maxAge is invalid");
-      }
-      str += "; Max-Age=" + Math.floor(maxAge);
-    }
-    if (opt.domain) {
-      if (!fieldContentRegExp.test(opt.domain)) {
-        throw new TypeError("option domain is invalid");
-      }
-      str += "; Domain=" + opt.domain;
-    }
-    if (opt.path) {
-      if (!fieldContentRegExp.test(opt.path)) {
-        throw new TypeError("option path is invalid");
-      }
-      str += "; Path=" + opt.path;
-    }
-    if (opt.expires) {
-      var expires = opt.expires;
-      if (!isDate(expires) || isNaN(expires.valueOf())) {
-        throw new TypeError("option expires is invalid");
-      }
-      str += "; Expires=" + expires.toUTCString();
-    }
-    if (opt.httpOnly) {
-      str += "; HttpOnly";
-    }
-    if (opt.secure) {
-      str += "; Secure";
-    }
-    if (opt.partitioned) {
-      str += "; Partitioned";
-    }
-    if (opt.priority) {
-      var priority = typeof opt.priority === "string" ? opt.priority.toLowerCase() : opt.priority;
-      switch (priority) {
-        case "low":
-          str += "; Priority=Low";
-          break;
-        case "medium":
-          str += "; Priority=Medium";
-          break;
-        case "high":
-          str += "; Priority=High";
-          break;
-        default:
-          throw new TypeError("option priority is invalid");
-      }
-    }
-    if (opt.sameSite) {
-      var sameSite = typeof opt.sameSite === "string" ? opt.sameSite.toLowerCase() : opt.sameSite;
-      switch (sameSite) {
-        case true:
-          str += "; SameSite=Strict";
-          break;
-        case "lax":
-          str += "; SameSite=Lax";
-          break;
-        case "strict":
-          str += "; SameSite=Strict";
-          break;
-        case "none":
-          str += "; SameSite=None";
-          break;
-        default:
-          throw new TypeError("option sameSite is invalid");
-      }
-    }
-    return str;
-  }
-  function decode(str) {
-    return str.indexOf("%") !== -1 ? decodeURIComponent(str) : str;
-  }
-  function encode2(val) {
-    return encodeURIComponent(val);
-  }
-  function isDate(val) {
-    return __toString.call(val) === "[object Date]" || val instanceof Date;
-  }
-  function tryDecode(str, decode2) {
-    try {
-      return decode2(str);
-    } catch (e) {
-      return str;
-    }
-  }
-  return cookie;
-}
-var cookieExports = requireCookie();
 const INVALID_COOKIE_CHARACTER_REGEX = /[\x00-\x1F\x7F()<>@,;:"/[\]?={} \t]/;
 function validate_options(options2) {
   if (options2?.path === void 0) {
@@ -2953,7 +2802,7 @@ function validate_options(options2) {
 }
 function get_cookies(request, url, trailing_slash) {
   const header = request.headers.get("cookie") ?? "";
-  const initial_cookies = cookieExports.parse(header, { decode: (value) => value });
+  const initial_cookies = parse(header, { decode: (value) => value });
   const normalized_url = normalize_path(url.pathname, trailing_slash);
   const new_cookies = {};
   const defaults = {
@@ -2975,15 +2824,15 @@ function get_cookies(request, url, trailing_slash) {
       if (c && domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
         return c.value;
       }
-      const req_cookies = cookieExports.parse(header, { decode: opts?.decode });
-      const cookie2 = req_cookies[name];
-      return cookie2;
+      const req_cookies = parse(header, { decode: opts?.decode });
+      const cookie = req_cookies[name];
+      return cookie;
     },
     /**
      * @param {import('cookie').CookieParseOptions} [opts]
      */
     getAll(opts) {
-      const cookies2 = cookieExports.parse(header, { decode: opts?.decode });
+      const cookies2 = parse(header, { decode: opts?.decode });
       for (const c of Object.values(new_cookies)) {
         if (domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
           cookies2[c.name] = c.value;
@@ -3027,7 +2876,7 @@ function get_cookies(request, url, trailing_slash) {
       if (!options2.domain || options2.domain === url.hostname) {
         path = resolve(normalized_url, path);
       }
-      return cookieExports.serialize(name, value, { ...defaults, ...options2, path });
+      return serialize(name, value, { ...defaults, ...options2, path });
     }
   };
   function get_cookie_header(destination, header2) {
@@ -3036,14 +2885,14 @@ function get_cookies(request, url, trailing_slash) {
       ...initial_cookies
     };
     for (const key2 in new_cookies) {
-      const cookie2 = new_cookies[key2];
-      if (!domain_matches(destination.hostname, cookie2.options.domain)) continue;
-      if (!path_matches(destination.pathname, cookie2.options.path)) continue;
-      const encoder2 = cookie2.options.encode || encodeURIComponent;
-      combined_cookies[cookie2.name] = encoder2(cookie2.value);
+      const cookie = new_cookies[key2];
+      if (!domain_matches(destination.hostname, cookie.options.domain)) continue;
+      if (!path_matches(destination.pathname, cookie.options.path)) continue;
+      const encoder2 = cookie.options.encode || encodeURIComponent;
+      combined_cookies[cookie.name] = encoder2(cookie.value);
     }
     if (header2) {
-      const parsed = cookieExports.parse(header2, { decode: (value) => value });
+      const parsed = parse(header2, { decode: (value) => value });
       for (const name in parsed) {
         combined_cookies[name] = parsed[name];
       }
@@ -3074,10 +2923,10 @@ function path_matches(path, constraint) {
 function add_cookies_to_headers(headers2, cookies) {
   for (const new_cookie of cookies) {
     const { name, value, options: options2 } = new_cookie;
-    headers2.append("set-cookie", cookieExports.serialize(name, value, options2));
+    headers2.append("set-cookie", serialize(name, value, options2));
     if (options2.path.endsWith(".html")) {
       const path = add_data_suffix(options2.path);
-      headers2.append("set-cookie", cookieExports.serialize(name, value, { ...options2, path }));
+      headers2.append("set-cookie", serialize(name, value, { ...options2, path }));
     }
   }
 }
@@ -3109,7 +2958,7 @@ function requireSetCookie() {
         e
       );
     }
-    var cookie2 = {
+    var cookie = {
       name,
       value
     };
@@ -3118,22 +2967,22 @@ function requireSetCookie() {
       var key2 = sides.shift().trimLeft().toLowerCase();
       var value2 = sides.join("=");
       if (key2 === "expires") {
-        cookie2.expires = new Date(value2);
+        cookie.expires = new Date(value2);
       } else if (key2 === "max-age") {
-        cookie2.maxAge = parseInt(value2, 10);
+        cookie.maxAge = parseInt(value2, 10);
       } else if (key2 === "secure") {
-        cookie2.secure = true;
+        cookie.secure = true;
       } else if (key2 === "httponly") {
-        cookie2.httpOnly = true;
+        cookie.httpOnly = true;
       } else if (key2 === "samesite") {
-        cookie2.sameSite = value2;
+        cookie.sameSite = value2;
       } else if (key2 === "partitioned") {
-        cookie2.partitioned = true;
+        cookie.partitioned = true;
       } else {
-        cookie2[key2] = value2;
+        cookie[key2] = value2;
       }
     });
-    return cookie2;
+    return cookie;
   }
   function parseNameValuePair(nameValuePairStr) {
     var name = "";
@@ -3147,7 +2996,7 @@ function requireSetCookie() {
     }
     return { name, value };
   }
-  function parse(input, options2) {
+  function parse2(input, options2) {
     options2 = options2 ? Object.assign({}, defaultParseOptions, options2) : defaultParseOptions;
     if (!input) {
       if (!options2.map) {
@@ -3183,8 +3032,8 @@ function requireSetCookie() {
     } else {
       var cookies = {};
       return input.filter(isNonEmptyString).reduce(function(cookies2, str) {
-        var cookie2 = parseString(str, options2);
-        cookies2[cookie2.name] = cookie2;
+        var cookie = parseString(str, options2);
+        cookies2[cookie.name] = cookie;
         return cookies2;
       }, cookies);
     }
@@ -3244,8 +3093,8 @@ function requireSetCookie() {
     }
     return cookiesStrings;
   }
-  setCookie.exports = parse;
-  setCookie.exports.parse = parse;
+  setCookie.exports = parse2;
+  setCookie.exports.parse = parse2;
   setCookie.exports.parseString = parseString;
   setCookie.exports.splitCookiesString = splitCookiesString;
   return setCookie.exports;
@@ -3274,8 +3123,8 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
         }
         if (url.origin !== event.url.origin) {
           if (`.${url.hostname}`.endsWith(`.${event.url.hostname}`) && credentials !== "omit") {
-            const cookie2 = get_cookie_header(url, request.headers.get("cookie"));
-            if (cookie2) request.headers.set("cookie", cookie2);
+            const cookie = get_cookie_header(url, request.headers.get("cookie"));
+            if (cookie) request.headers.set("cookie", cookie);
           }
           return fetch(request);
         }
@@ -3305,9 +3154,9 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
           return await fetch(request);
         }
         if (credentials !== "omit") {
-          const cookie2 = get_cookie_header(url, request.headers.get("cookie"));
-          if (cookie2) {
-            request.headers.set("cookie", cookie2);
+          const cookie = get_cookie_header(url, request.headers.get("cookie"));
+          if (cookie) {
+            request.headers.set("cookie", cookie);
           }
           const authorization = event.request.headers.get("authorization");
           if (authorization && !request.headers.has("authorization")) {
@@ -3513,12 +3362,12 @@ async function respond(request, options2, manifest, state) {
         trailing_slash = "always";
       } else if (route.page) {
         const nodes = await load_page_nodes(route.page, manifest);
-        if (BROWSER) ;
+        if (DEV) ;
         trailing_slash = get_option(nodes, "trailingSlash");
       } else if (route.endpoint) {
         const node = await route.endpoint();
         trailing_slash = node.trailingSlash;
-        if (BROWSER) ;
+        if (DEV) ;
       }
       if (!is_data_request) {
         const normalized = normalize_path(url.pathname, trailing_slash ?? "never");

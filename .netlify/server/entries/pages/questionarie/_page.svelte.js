@@ -20,7 +20,7 @@ function _page($$payload, $$props) {
     let question = each_array[index];
     $$payload.out += `<label class="block bg-white shadow rounded-lg p-4 cursor-pointer flex items-center justify-between"><span class="mr-4 flex-grow">${escape_html(question)}</span> <input type="checkbox"${attr("checked", answers[`q${index}`], true)}${attr("id", `checkbox-${index}`)}></label>`;
   }
-  $$payload.out += `<!--]--> <input type="submit" value="Результат" class="bg-[#DDC8C4] hover:bg-[#c5a9a1] text-gray500 py-2 px-6 rounded-md cursor-pointer"></form> `;
+  $$payload.out += `<!--]--> <input type="submit" value="Результат" class="bg-primary-light hover:bg-primary text-white py-2 px-6 rounded-md cursor-pointer"></form> `;
   {
     $$payload.out += "<!--[!-->";
   }

@@ -11,7 +11,7 @@ function _page($$payload, $$props) {
         Вместе мы сможем разобраться в ваших чувствах, вернуть баланс и справиться с тревогой,
         стрессом или прошлыми травмами. Я использую современные подходы, такие как EMDR,
         когнитивно-поведенческую терапию и IFS, чтобы помочь вам лучше понять себя и улучшить
-        качество жизни. Моя цель — поддержать вас на пути к личным изменениям. <br> Давайте начнем этот путь вместе!</p> <a${attr("href", paraglide_sveltekit_translate_attribute_pass_translateAttribute(`/client`, void 0))} class="inline-block mt-5 mb-10 bg-primary text-gray-700 px-6 py-3 text-lg font-semibold rounded-lg shadow-md hover:bg-primary-light transition">Записаться</a></div></div></div>`;
+        качество жизни. Моя цель — поддержать вас на пути к личным изменениям. <br> Давайте начнем этот путь вместе!</p> <a${attr("href", paraglide_sveltekit_translate_attribute_pass_translateAttribute(`/client`, void 0))} class="inline-block mt-5 mb-10 bg-primary-light hover:bg-primary-light text-white px-6 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300 transform hover:scale-120">Записаться</a></div></div></div>`;
   pop();
 }
 export {

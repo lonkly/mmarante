@@ -73,20 +73,20 @@
     "file": "chunks/paths.js",
     "name": "paths"
   },
-  "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.0.11_@type_1f9c957934ebeb6187bc00844579f187/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+  "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.3.4_@types_d092e4b606d0932d87be8f9283b46150/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
-    "src": "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.0.11_@type_1f9c957934ebeb6187bc00844579f187/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "src": "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.3.4_@types_d092e4b606d0932d87be8f9283b46150/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
     "isEntry": true,
     "imports": [
       "_index.js",
       "_client.js"
     ]
   },
-  "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.0.11_@type_1f9c957934ebeb6187bc00844579f187/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+  "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.3.4_@types_d092e4b606d0932d87be8f9283b46150/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
     "name": "index",
-    "src": "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.0.11_@type_1f9c957934ebeb6187bc00844579f187/node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "src": "node_modules/.pnpm/@sveltejs+kit@2.16.1_@sveltejs+vite-plugin-svelte@5.0.3_svelte@5.19.5_vite@6.3.4_@types_d092e4b606d0932d87be8f9283b46150/node_modules/@sveltejs/kit/src/runtime/server/index.js",
     "isEntry": true,
     "imports": [
       "_index.js",
@@ -127,7 +127,7 @@
       "_index2.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.Dr0GKKIj.css"
+      "_app/immutable/assets/_layout.DXs2XuJs.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -150,7 +150,7 @@
       "_index2.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.cAiIUcAD.css"
+      "_app/immutable/assets/_page.HK3Z3Avs.css"
     ]
   },
   "src/routes/client/+page.svelte": {
@@ -169,7 +169,7 @@
     "src": "src/routes/contacts/+page.svelte",
     "isEntry": true,
     "css": [
-      "_app/immutable/assets/_page.OU6bvK7H.css"
+      "_app/immutable/assets/_page.DB-b7ZFR.css"
     ]
   },
   "src/routes/education/+page.svelte": {
@@ -190,7 +190,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BX5BVv0P.css"
+      "_app/immutable/assets/_page.B1Yk4WdP.css"
     ]
   },
   "src/routes/questionarie/+page.svelte": {
