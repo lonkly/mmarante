@@ -60,12 +60,5 @@
         alt="WhatsApp"
         on:click={() => redirectTo('whatsapp')}
       />
-      <!-- Skype Icon -->
-      <img
-        class="icon m-3"
-        src="images/other/skype.svg"
-        alt="Skype"
-        on:click={() => redirectTo('skype')}
-      />
     </div>
   </div>
