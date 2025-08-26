@@ -1,6 +1,12 @@
 <script>
-  // No additional logic needed, just markup + styling
+  import SEO from '$lib/SEO.svelte';
 </script>
+
+<SEO 
+  title="Главная"
+  description="Мария Маранте - клинический психолог, сексолог, EMDR-практик. Профессиональная помощь при тревоге, стрессе, травмах. Онлайн-консультации."
+  keywords="Мария Маранте, психолог Москва, сексолог, EMDR терапия, КПТ терапевт, IFS терапия, онлайн консультация психолога"
+/>
 
 <div class="max-w-6xl mx-auto py-8 px-4">
   <!-- White card container -->
@@ -17,15 +23,17 @@
     <!-- Text Section -->
     <div class="flex-1 max-w-xl text-gray-700">
       <h1 class="text-4xl font-bold mb-4">Мария Маранте</h1>
-      <h6 class="text-lg font-semibold">Клинический психолог</h6>
-      <h6 class="text-lg font-semibold">Сексолог</h6>
-      <h6 class="text-lg font-semibold">Европейский EMDR-практик</h6>
-      <h6 class="text-lg font-semibold">КПТ и IFS терапевт</h6>
-      <h6 class="text-lg font-semibold">Член Национальной Ассоциации EMDR</h6>
-      <h6 class="text-lg font-semibold">
-        Член Ассоциации когнитивно-поведенческой психотерапии АКПП
-      </h6>
-      <h6 class="text-lg font-semibold">Член Ассоциации Сексологов</h6>
+      <ul class="list-none space-y-1">
+        <li class="text-lg font-semibold">Клинический психолог</li>
+        <li class="text-lg font-semibold">Сексолог</li>
+        <li class="text-lg font-semibold">Европейский EMDR-практик</li>
+        <li class="text-lg font-semibold">КПТ и IFS терапевт</li>
+        <li class="text-lg font-semibold">Член Национальной Ассоциации EMDR</li>
+        <li class="text-lg font-semibold">
+          Член Ассоциации когнитивно-поведенческой психотерапии АКПП
+        </li>
+        <li class="text-lg font-semibold">Член Ассоциации Сексологов</li>
+      </ul>
 
       <p class="mt-4 text-base leading-relaxed">
         Привет! Я Мария — клинический психолог и сексолог.
